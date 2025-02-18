@@ -41,37 +41,41 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+            <li><a href="{% url 'about' %}" class="btn btn btn-outline-light ">About Zee</a></li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-dark btn-light">Logout</button>
+                            <button type="submit" class="btn btn-outline-light">Logout</button>
                         </form>
                     </li>
                 {% else %}
                     <li class="nav-item me-2">
-                        <a class="btn btn-outline-light  btn-dark text-info" href="{% url 'login' %}">Login</a>
+                        <a class="btn btn-outline-light " href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light btn-dark text-info" href="{% url 'signup' %}">Sign Up</a>
+                        <a class="btn btn-outline-light" href="{% url 'signup' %}">Sign Up</a>
                     </li>
                 {% endif %}                    
             </ul>
         </div>
     </div>
 </nav>
-<div class="p-4 mt-2">
+<div class="p-2 mt-2 container">
 
     {% block contentblock %}{% endblock contentblock %}
 
 </div>
 
 
-<!-- Footer -->
+    <!-- Footer Section -->
     <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <div class="socials mt-4">
+            <a class="social-item text-primary" href="https://www.linkedin.com/in/zelalems-863776180"><i class="ti-linkedin"></i></a>
+            <a class="social-item text-primary" href="https://github.com"><i class="ti-github"></i></a>
+        </div>
         <p class="mb-0">&copy; 2025 My MyLists App | by Zee Smith</p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-   
+
     </body>
 </html>

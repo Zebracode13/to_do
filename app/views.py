@@ -8,9 +8,36 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils import timezone
 from .models import Task
-from .forms import TaskForm, UserCreateForm
+from .forms import TaskForm, UserCreateForm,ContactForm
+from django.core.mail import send_mail
 
-# User Signup View
+def about(request):
+    contact_form = ContactForm()  # Ensure a form instance is created
+
+    if request.method == 'POST':
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            name = contact_form.cleaned_data['name']
+            email = contact_form.cleaned_data['email']
+            message = contact_form.cleaned_data['message']
+
+            # Send an email (Make sure email settings are configured in settings.py)
+            send_mail(
+                f'Contact Form Submission from {name}', 
+                message,
+                email,
+                ['your_email@example.com'],  # Replace with your email
+                fail_silently=False,
+            )
+
+            return redirect('about')  # Redirect to prevent multiple submissions
+
+    return render(request, 'about.html', {'contact_form': contact_form})  # Pass form instance to the template
+
+
+def about(request):
+    return render(request, 'about.html')
+
 class SignupView(View):
     template_name = 'accounts/signup.html'
 
