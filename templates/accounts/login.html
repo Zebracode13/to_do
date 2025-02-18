@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block contentblock %}
+<div class="row align-items-md-stretch justify-content-center mt-5">
+    <div class="col-md-8 justify-content-center mt-5">
+        <div class="h-100 p-5 border rounded-3"  >
+            <p class="text-center"><strong>Please Login:</strong></p>
+        <div class="container-md p-2">
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <button type="submit" class="btn btn-success">Login</button>
+                    <a class="btn btn-primary align-start" href="{% url 'signup' %}">Create account</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock contentblock %}

@@ -1,0 +1,121 @@
+/* Improved Styles for MyLists App */
+#datepicker {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.navbar {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, hsl(218, 100%, 50%), #a4cbf0, blue);
+  padding: 15px;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.table thead {
+  background-color: #007bff;
+  color: white;
+  text-transform: uppercase;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.btn {
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: black;
+}
+
+/* Notifications */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+}
+
+.toast {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px 25px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toast-success {
+  background-color: #28a745 !important;
+  color: white;
+}
+
+.toast-danger {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.toast-warning {
+  background-color: #ffc107 !important;
+  color: black;
+}
+
+.toast-info {
+  background-color: #007bff !important;
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block contentblock %}
+<div class="row align-items-md-stretch justify-content-center">
+    <div class="col-md-8 justify-content-center p-4 ">
+        <div class="h-100 p-5 border rounded-3 text-light"  style="background: linear-gradient(to right, #0073f7, rgb(236, 6, 6))";> 
+            <h2 class="text-center text-primary">Update Task</h2>
+      
+            <form method="post" class="mt-4">
+                {% csrf_token %}  <!-- CSRF token correctly placed -->
+                <div class="col-md-12">
+                        <div class="form-outline">
+                            {% bootstrap_field form.title %}
+                        </div>
+
+                        <div class="form-outline">
+                            {% bootstrap_field form.description %}
+                        </div>
+        
+                        <div class="form-outline">
+                            {% bootstrap_field form.deadline %}
+                        </div>
+
+
+                    <div class=" mt-3">
+                    <button type="submit" class="btn btn-warning align-items-end">Save Changes</button>
+                    <a class="btn btn-danger" href="{% url 'home' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock contentblock %}

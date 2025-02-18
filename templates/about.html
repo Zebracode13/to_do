@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contentblock %}
+
+<style>
+    .about-container {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .project-card:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="container mt-5 about-container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-lg rounded-5 p-4">
+                <h2 class="text-center text-primary">About Me</h2>
+                <p class="text-center">
+                    Hi, I'm <strong>Zelalem Smith</strong>, a passionate software and robotics engineer with a strong background in **automation, mechatronics, and software development**.
+                </p>
+                <p class="text-center">
+                    My journey includes working with **Tesla** on robotic automation, **Fanuc robotic recovery**, and **PLC programming**. I'm skilled in **Python, Java, and control systems**, with a keen interest in **machine learning and blockchain technologies**.
+                </p>
+                <p class="text-center">
+                    Currently, I am focused on developing automation systems and **enhancing intelligent solutions in robotics**.
+                </p>
+                <div class="text-center mt-3">
+                    <a href="{% url 'home' %}" class="btn btn-primary">Visit My Task App</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+            <h3 class="text-center text-secondary">My Projects</h3>
+            <div class="card shadow-lg rounded-5 p-3 project-card">
+                <img src="{% static 'images/Screenshot_2025_02_17.png' %}" class="card-img-top rounded-5" alt="My Lists App">
+                <div class="card-body text-center">
+                    <h5 class="card-title">My Lists App</h5>
+                    <p class="card-text">An intuitive task management app designed to keep you productive.</p>
+                    <a href="{% url 'task_list' %}" class="btn btn-primary">View Project</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contentblock %}

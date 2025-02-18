@@ -1,0 +1,64 @@
+{% extends 'base.html' %}    
+{% load static %}
+{% load django_bootstrap5 %}
+{% block contentblock %}
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-6 col-md-12 m-2" >
+            <div class="card rounded-5 shadow-lg">
+                <div class="card-body p-4">
+                    {% if user.is_authenticated %}
+                        <h4 class="text-center fw-bold text-primary">Add to List</h4>
+                        <form method="post" class="">
+                            {% csrf_token %}
+                            <div class="">
+                                {% bootstrap_field task_form.title %}
+                            </div>
+                            <div class="">
+                                {% bootstrap_field task_form.description %}
+                            </div>
+                            <div class="position-relative">
+                                {% bootstrap_field task_form.deadline %}
+                            </div>
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary w-100">Add to List</button>
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-12 m-2">
+            <div class="card rounded-5 shadow-lg p-2" style="background-color:linear-gradient(to right, #0073f7, rgb(236, 6, 6))";>
+                {% if user.is_authenticated %}
+                    <h4 class="text-center fw-bold text-primary">Task List</h4>
+                    <div class="d-flex flex-column  p-3">
+                        {% for task in tasks %}
+                          <hr>
+                          <h5 class="card-title">{{ task.title }}</h5>
+                          <p class="card-text">{{ task.description }}</p>
+                          <p class="card-text text-muted">{% if task.completed %} ✅ Completed on: {{ task.completed_date|date:"Y-m-d H:i" }} {% else %} Due: {{ task.deadline }} {% endif %}</p>
+                          <div class="d-flex gap-2">
+                              {% if not task.completed %}
+                                  <form method="POST" action="{% url 'complete_task' task.id %}">
+                                      {% csrf_token %}
+                                      <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                                  </form>
+                                  <a href="{% url 'update_task' task.id %}" class="btn btn-warning btn-sm">Edit</a>
+                              {% else %}
+                                  <form method="POST" action="{% url 'delete_task' task.id %}">
+                                      {% csrf_token %}
+                                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                  </form>
+                              {% endif %}
+                                  
+                            </div>
+                        {% empty %}
+                            <p class="text-center">No tasks available. Add a new task above!</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock contentblock %}
